@@ -30,30 +30,30 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 # Root directory for dataset
-dataroot = "data-frog/ben"
+dataroot = "/home/beni/dataset2"
 
-Gpath = "checkpointG.pth"
+Gpath = None
 
-Dpath = "checkpointD.pth"
+Dpath = None
 
 # Number of GPUs available. Use 0 for CPU mode.
-ngpu = 0
+ngpu = 1
 
 # Number of workers for dataloader
 workers = 0
 
 # Number of training epochs
-num_epochs = 1
+num_epochs = 7
 
 # Batch size during training
-batch_size = 8
+batch_size = 32
 
 # Spatial size of training images. All images will be resized to this
 #   size using a transformer.
 image_size = 64
 
 # Number of channels in the training images. For color images this is 3
-nc = 1
+nc = 3
 
 # Size of z latent vector (i.e. size of generator input)
 nz = 100
@@ -91,7 +91,7 @@ plt.figure(figsize=(8,8))
 plt.axis("off")
 plt.title("Training Images")
 plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=2, normalize=True).cpu(),(1,2,0)))
-#plt.savefig('/cloudstorage/example.png')
+plt.savefig('/cloudstorage/example.png')
 
 
 # custom weights initialization called on netG and netD
@@ -150,7 +150,7 @@ class Generator(nn.Module):
 
 # Create the generator
 if(Gpath != None):
-    netG = load_model(Gpath)
+    netG = load_model(Gpath)to(device)
 else:
     netG = Generator(ngpu).to(device)
     # Apply the weights_init function to randomly initialize all weights
@@ -193,7 +193,7 @@ class Discriminator(nn.Module):
     
 # Create the Discriminator
 if(Dpath != None):
-    netD = load_model(Dpath)
+    netD = load_model(Dpath).to(device)
 else:
     netD = Discriminator(ngpu).to(device)
     # Apply the weights_init function to randomly initialize all weights
@@ -335,7 +335,7 @@ plt.subplot(1,2,2)
 plt.axis("off")
 plt.title("Fake Images")
 plt.imshow(np.transpose(img_list[-1],(1,2,0)))
-#plt.savefig('/cloudstorage/result.png')
-plt.show()
+plt.savefig('/cloudstorage/result.png')
+
 
 
