@@ -148,19 +148,6 @@ class Generator(nn.Module):
         return self.main(input)
 
 
-# Create the generator
-if(Gpath != None):
-    netG = load_model(Gpath)to(device)
-else:
-    netG = Generator(ngpu).to(device)
-    # Apply the weights_init function to randomly initialize all weights
-    # to mean=0, stdev=0.2.
-    netG.apply(weights_init)
-
-
-# Print the model
-print(netG)
-
 # Discriminator Code
 
 class Discriminator(nn.Module):
@@ -191,6 +178,20 @@ class Discriminator(nn.Module):
     def forward(self, input):
         return self.main(input)
     
+
+# Create the generator
+if(Gpath != None):
+    netG = load_model(Gpath).to(device)
+else:
+    netG = Generator(ngpu).to(device)
+    # Apply the weights_init function to randomly initialize all weights
+    # to mean=0, stdev=0.2.
+    netG.apply(weights_init)
+
+# Print the model
+print(netG)
+
+
 # Create the Discriminator
 if(Dpath != None):
     netD = load_model(Dpath).to(device)

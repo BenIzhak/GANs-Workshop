@@ -7,6 +7,7 @@ def getEdgeMap(img, lwT, upT):
 
 def convertToBandW(img, i):
     im_bw = cv2.threshold(img, 125, 255, cv2.THRESH_BINARY)[1]
+    im_bw = (255 - im_bw)
     cv2.imwrite('edges\\' + 'e-' + str(i) + '.png', im_bw)
     
 def convertToGrayscale(img, i):
