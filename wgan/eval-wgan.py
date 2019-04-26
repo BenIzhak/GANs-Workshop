@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 from torch.autograd import Variable
 from models import Generator, Discriminator
 
-filepath = '/home/beni/gen_edge_model.pt'
-img_size = (64, 64, 1)
+filepath = '/home/beni/gen_MNIST_model.pt'
+img_size = (32, 32, 1)
 batch_size = 64
 nz = 100
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -46,7 +46,7 @@ plt.subplot(1,1,1)
 plt.axis("off")
 plt.title("Fake Images")
 plt.imshow(np.transpose(vutils.make_grid(fake, padding=3, normalize=True),(1,2,0)))
-plt.savefig('/cloudstorage/result-wgan.png')
+plt.savefig('/cloudstorage/result-MNIST-wgan.png')
 
   
     

@@ -113,12 +113,11 @@ class Trainer():
                 self._generator_train_iteration(data[0])
 
             if i % self.print_every == 0:
-                print("Iteration {}".format(i))
-                print("D: {}".format(self.losses['D'][-1]))
-                print("GP: {}".format(self.losses['GP'][-1]))
-                print("Gradient norm: {}".format(self.losses['gradient_norm'][-1]))
+                print("Iteration [{}/{}]:".format(i, len(data_loader)), end='   ')
                 if self.num_steps > self.critic_iterations:
-                    print("G: {}".format(self.losses['G'][-1]))
+                    print("D: {:07.5f}".format(self.losses['D'][-1]), "GP: {:07.5f}".format(self.losses['GP'][-1]), "Gradient norm: {:07.5f}".format(self.losses['gradient_norm'][-1]), "G: {:07.5f}".format(self.losses['G'][-1]))
+                else:
+                    print("D: {:07.5f}".format(self.losses['D'][-1]), "GP: {:07.5f}".format(self.losses['GP'][-1]), "Gradient norm: {:07.5f}".format(self.losses['gradient_norm'][-1]))
 
     def train(self, data_loader, epochs, save_training_gif=True):
         if save_training_gif:
@@ -129,7 +128,7 @@ class Trainer():
             training_progress_images = []
 
         for epoch in range(epochs):
-            print("\nEpoch {}".format(epoch))
+            print("\nEpoch [{}/{}]".format(epoch, epochs))
             self._train_epoch(data_loader)
 
             if save_training_gif and epoch % 20 == 0:
