@@ -10,6 +10,6 @@ In order to generate new images using this method you have to:
 
 The frogs dataset was taken from: https://github.com/jonshamir/frog-dataset
 
-The HED network was taken from *TODO*: https://github.com/sniklaus/pytorch-hed
+The HED network was taken from: https://github.com/sniklaus/pytorch-hed
 
 The DCGAN network based on: https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html
