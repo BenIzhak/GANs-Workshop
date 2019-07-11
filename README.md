@@ -4,7 +4,7 @@ We propose a new approach to generate images- splitting the generating task into
 
 ## Instructions
 
-In order to generate new images using this method you have to:
+In order to generate new images with yours dataset using this method you have to:
 
 ### 1. Prepare the edges dataset using HED and Canny.
 First run canny.py to extract eages from your dataset using canny algorithm,
@@ -24,7 +24,9 @@ Train pix2pix network TODO-ROTEM
 ### 4. Generate new edges and color them
 Now we can generate new edges. In order to do so run "python generate_edges.py Gpath Rpath".
 Replace 'Gpath' with path to the DCGAN weights and 'Rpath' with path to the destination directory. 
-finally we can use pix2pix to color the fake edges and get the final results.
+finally we can use pix2pix TODO TAKE PARAMETERS FROM ROTEM to color the fake edges and get the final results.
+
+You also can use our weights named "checkpointG.pth" and perform only the last two steps above.  
 
 ## Usefull links
 The frogs dataset was taken from: https://github.com/jonshamir/frog-dataset
