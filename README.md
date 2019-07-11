@@ -1,5 +1,7 @@
 # Edge-GAN
 
+We propose a new approach to generate images- splitting the generating task into two parts. The first one is generating edges and the second one is coloring them. In the first part we use Deep Convolutional GAN (DCGAN) to generate the edges of the new images, and in the second part we use pix2pix network to color them.
+
 ## Instructions
 
 In order to generate new images using this method you have to:
