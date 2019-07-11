@@ -1,27 +1,30 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri May 17 18:22:30 2019
-
-@author: beniz
-"""
 
 import torch
 import torch.nn.parallel
 import numpy as np
 from DCGAN_models import Generator
 import matplotlib.pyplot as plt
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("Gpath", help="Path to the generator weights")
+parser.add_argument("Rpath", help="The generated edges will be save in that directory")
+parser.add_argument("numOfImages", help="How many images we want to generate", nargs='?', default=2048, type=int)
+parser.add_argument("manualSeed", help="Set random seed for reproducibility", nargs='?', default=999, type=int)
+args = parser.parse_args()
+
 
 # Set random seem for reproducibility
-manualSeed = 998
-#manualSeed = random.randint(1, 10000) # use if you want new results
+manualSeed = args.manualSeed
 torch.manual_seed(manualSeed)
 torch.cuda.manual_seed_all(manualSeed)
 
 # The path to the weights 
-Gpath = '/home/beni/checkpointG2.1.1.pth'
+Gpath = args.Gpath
 
 # How many images to generate
-batch_size = 2048
+batch_size = args.numOfImages
 
 # Size of z latent vector (i.e. size of generator input)
 nz = 100
@@ -63,4 +66,4 @@ for i in range(batch_size):
     img = normalize(img)
     img = np.transpose(img, (1,2,0))
     plt.axis("off")
-    plt.imsave("/home/beni/imagesForCompare/g-" + str(i) + ".png", img.reshape(64,64), cmap='gray')
+    plt.imsave(args.Rpath + "/g-" + str(i) + ".png", img.reshape(64,64), cmap='gray')
