@@ -26,7 +26,7 @@ Now we can generate new edges. In order to do so run "python generate_edges.py G
 Replace 'Gpath' with path to the DCGAN weights and 'Rpath' with path to the destination directory. 
 finally we can use pix2pix TODO TAKE PARAMETERS FROM ROTEM to color the fake edges and get the final results.
 
-You also can use our weights named "checkpointG.pth" and perform only the last two steps above.  
+Note: You can also use our weights of the pre-trained model, named "checkpointG.pth" and perform only the last two steps above.  
 
 ## Usefull links
 The frogs dataset was taken from: https://github.com/jonshamir/frog-dataset
