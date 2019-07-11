@@ -1,10 +1,10 @@
-# GANs-Workshop
+# Edge-GAN
 
 ## Instructions
 
 In order to generate new images using this method you have to:
 
-### 1. Prepare the dataset using HED and Canny.
+### 1. Prepare the edges dataset using HED and Canny.
 First run canny.py to extract eages from your dataset using canny algorithm,
 then extract edges using the HED network (link to the HED source code down below),
 finally run TODO-TAKE FROM ROTEM to combine the edges we extracted before.  
@@ -20,9 +20,11 @@ and number of epochs.
 Train pix2pix network TODO-ROTEM 
 
 ### 4. Generate new edges and color them
-Now we can generate new edges with generate_images.py 
+Now we can generate new edges. In order to do so run "python generate_edges.py Gpath Rpath".
+Replace 'Gpath' with path to the DCGAN weights and 'Rpath' with path to the destination directory. 
+finally we can use pix2pix to color the fake edges and get the final results.
 
-
+## Usefull links
 The frogs dataset was taken from: https://github.com/jonshamir/frog-dataset
 
 The HED network was taken from: https://github.com/sniklaus/pytorch-hed
