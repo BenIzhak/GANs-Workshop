@@ -4,7 +4,8 @@
 
 In order to generate new images using this method you have to:
 
-1. Prepare the dataset using HED and Canny.
+### 1. Prepare the dataset using HED and Canny.
+
 2. Train the DCGAN to generate the edges.
 3. Train the pix2pix network to paint the edges.
 
