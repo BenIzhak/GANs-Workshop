@@ -9,7 +9,7 @@ In order to generate new images with your dataset using this method you have to:
 ### 1. Prepare the edges dataset using HED and Canny.
 First run `python canny.py` to extract edges from your dataset using canny algorithm,
 then extract edges using the HED network (link to the HED source code down below),
-finally run `combineEdges.py` to combine the edges you extracted before.  
+finally run `combine_edges.py` to combine the edges you extracted before.  
 
 ### 2. Train the DCGAN with the edges dataset we created.
 To train the DCGAN with the edges dataset run: `python DCGAN_train.py dataRoot`.
