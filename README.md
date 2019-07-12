@@ -15,7 +15,7 @@ finally run `combine_edges.py` to combine the edges you extracted before.
 To train the DCGAN with the edges dataset run: `python DCGAN_train.py dataRoot`.
 Replace 'dataRoot' with the path to the directory that contains a directory with the
 edges images you created in the first step.
-You can run `python DCGAN_train.py -help` to see more arguments you can change like
+You can run `python DCGAN_train.py -h` to see more arguments you can change like
 the batch size and number of epochs.
 
 ### 3. Train the pix2pix network to paint the edges.
