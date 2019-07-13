@@ -19,15 +19,19 @@ You can run `python DCGAN_train.py -h` to see more arguments you can change like
 the batch size and number of epochs.
 
 ### 3. Train the pix2pix network to paint the edges.
-To train the pix2pix network you first have to create a dataset of pairs of images from the two domains.
-To do so, first you need to parition each domain into three parts- train, test and val.
-Then run `python datasets/combine_A_and_B.py --fold_A /path/to/data/A --fold_B /path/to/data/B --fold_AB /path/to/data`.
+To train the pix2pix network you first need to create a dataset of pairs of images from the two domains.
+To do so, first create a folder /path/to/data with subfolders A and B, that each have subfolders train,
+val and test. The images in /path/to/data/A/train are from domain A and the images in /path/to/data/B/train
+are the corresponding imags from domain B. Same for val and test. Corresponding images in a pair must be the
+same size and have the same filename.
+Then run `python datasets/combine_A_and_B.py --fold_A /path/to/data/A --fold_B /path/to/data/B --fold_AB /path/to/data`
+to combine each pair into a single image file.
 Now to train the network, run `python train.py --dataroot ./datasets/your-dataset --name name_pix2pix --model pix2pix --direction BtoA` where "your-dataset" is a path to your dataset of pairs and "name" is the name of the folder your results will be saved to.
 
 ### 4. Generate new edges and color them
 Now you can generate new edges. In order to do so run `python generate_edges.py Gpath Rpath`.
 Replace 'Gpath' with path to the DCGAN weights and 'Rpath' with path to the destination directory. 
-Finally to color the fake edges and get the final results, run `python test.py --dataroot Rpath --name name_pix2pix --model test --netG unet_256 --direction BtoA --dataset_mode single --norm batch`.
+Finally, to color the fake edges and get the final results, run `python test.py --dataroot Rpath --name name_pix2pix --model test --netG unet_256 --direction BtoA --dataset_mode single --norm batch`.
 
 Note: You can also use our weights of the pre-trained model, named "checkpointG.pth" and perform only the last two steps above.  
 
