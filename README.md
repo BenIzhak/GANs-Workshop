@@ -31,7 +31,8 @@ Now to train the network, run `python train.py --dataroot ./datasets/your-datase
 ### 4. Generate new edges and color them
 Now you can generate new edges. In order to do so run `python generate_edges.py Gpath Rpath`.
 Replace 'Gpath' with path to the DCGAN weights and 'Rpath' with path to the destination directory. 
-Finally, to color the fake edges and get the final results, run `python test.py --dataroot Rpath --name name_pix2pix --model test --netG unet_256 --direction BtoA --dataset_mode single --norm batch`.
+To color the fake edges and get the final results, run `python test.py --dataroot Rpath --name name_pix2pix --model test --netG unet_256 --direction BtoA --dataset_mode single --norm batch`.
+Finally, resize the resulted images to 64X64 as the original data by running `python resize.py`.
 
 Note: You can also use our weights of the pre-trained model, named "checkpointG.pth" and perform only the last two steps above.  
 
